@@ -1,6 +1,6 @@
 Normal[] particles = new Normal[1000];
 Oddball odd = new Oddball(400, 300, .5, 1);
-Fire[] rocketBoost = new Fire[60];
+Fire[] rocketBoost = new Fire[120];
 float spaceX = 0; //x and y values for spaceship
 float spaceY = 0;
 int assign;
@@ -32,7 +32,7 @@ void setup() {
     }
   }
   for (int i = 0; i<rocketBoost.length; i++) {
-    rocketBoost[i] = new Fire(spaceX, spaceY, random(.5, 1), random(-.5, .5));
+    rocketBoost[i] = new Fire(spaceX, spaceY, random(.5, 3), random(-.5, .5));
   }
 }//end of setup
 
@@ -42,17 +42,16 @@ void draw() {
   fill(250);
   odd.move();
   odd.show();
+  if (toggleOdd) {
+    for (int i = 0; i<rocketBoost.length; i++) {
+      rocketBoost[i].move(spaceX+100, spaceY+25);
+      rocketBoost[i].show();
+    }
+  }
   for (int i = 0; i<particles.length; i++) {
     particles[i].move();
     particles[i].show();
   }
-  if (toggleOdd) {
-    for (int i = 0; i<rocketBoost.length; i++) {
-      rocketBoost[i].move(spaceX+50, spaceY+25);
-      rocketBoost[i].show();
-    }
-  }
-  //System.out.println("x: " + spaceX + " y: " + spaceY);
 } //end of draw
 
 void mousePressed() {

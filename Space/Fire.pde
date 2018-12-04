@@ -1,5 +1,5 @@
 class Fire {
-  float c;
+  int c;
   int[] colors = {#FF0303, #FAFF03, #FF5703}; //red, yellow, orange
   int r;
   float x;
@@ -20,7 +20,6 @@ class Fire {
     if (dist(sX, sY, x, y) < 200) {
       x += xspeed;
       y += yspeed;
-      System.out.println("x: " + x + " y: " + y);
     } else {
       x = sX;
       y = sY;
@@ -28,7 +27,7 @@ class Fire {
   }
 
   void show() {
-    fill(#FF0303);
+    fill(c);
     ellipse(x, y, 5, 5);
   }
 }
